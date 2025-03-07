@@ -1,0 +1,454 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+/* Header Styles */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex; /* Ensure proper alignment */
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    background: #026aa7;
+    /* color: white; */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    z-index: 1000; /* Ensures it stays on top */
+}
+
+.header-left, .header-right {
+    
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    padding: 8px 15px;
+    border-radius: 4px;
+    color: #bcffb3;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+.header-left :hover,
+.header-right :hover {
+    color: #00c8ff; /* Pure white on hover */
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+
+
+
+/* Combined Board Styles */
+body {
+    background: linear-gradient(to right, #ff8f3a, #2b3ee6);
+    min-height: 100vh;
+    color: white;
+    display: flex;
+    padding-top: 60px;
+}
+
+.main-content {
+    display: flex;
+    flex-grow: 1; /* Allow main content to take up available space */
+    overflow-x: auto; /* Enable horizontal scrolling within main content */
+}
+
+
+
+.board {
+    margin: 20px;
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    align-items: flex-start;
+    min-width: 300px;
+    
+}
+
+
+
+.column {
+    width: 300px;
+    background: #111;
+    padding: 15px;
+    border-radius: 4px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-bottom: 70px;
+    overflow-y: auto;
+    overflow-x: auto;
+
+    align-items: stretch;
+    gap: 10px;
+
+    padding-bottom: 20px;
+    
+}
+
+.column h2 {
+    font-size: 18px;
+    color: #ffffff;
+    margin-bottom: 15px;
+    padding: 50px 10px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.Backlog {
+    background-color: #0d00ff;   
+}
+.To-Do {
+    background-color:  rgb(211, 0, 211);
+}
+.Doing {
+    background-color: #f87715;
+}
+.Done {
+    background-color: rgb(227, 240, 35);
+}
+
+
+/* Add Task Text */
+.add-Task {
+    background: rgba(43, 41, 41, 0.728);
+    width: 100%;
+    color: #5e6c84;
+    padding: 10px;
+    cursor: grab;
+    border-radius: 4px;
+    margin-top: 15px;
+    text-align: center;
+    margin-top: auto;
+
+}
+
+.add-Task-Container {
+    width: 100%; 
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-grow: 1;
+}
+.add-Task:hover {
+    background-color: rgba(65, 63, 63, 0.598);
+}
+
+
+
+
+
+/* 1. Make task title white */
+.task-text {
+    color: white;
+    font-weight: bold;
+}
+
+/* 2. Add space between title and date */
+.task-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+}
+
+.task-date {
+    margin-top: 5px; /* Add spacing below the title */
+    font-size: 12px;
+    color: gray;
+}
+
+
+
+/* Edit Button */
+.edit-btn {
+    position: absolute;
+    right: 20px;
+    display: flex;
+    margin: -20px 10px;
+    color: gray;
+    transform: scaleX(-1);
+    background: #272a2d;
+    border: none;
+    cursor: pointer;
+    padding: 3px 5px;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.edit-btn:hover {
+    color: black;
+    background: #303743;
+}
+
+
+/* 4. Move checkbox to the top near the edit button */
+.task-container {
+    position: relative;
+}
+
+.task-checkbox {
+    position: absolute;
+    right: 10px; 
+    top: 10px;
+
+    height: 20px;
+    width: 20px;
+    appearance: none;
+    border-radius: 50%;
+    border: 2px solid #222;
+    cursor: pointer;
+    transition: background 0.3s ease, border 0.3s ease;
+}
+.task-checkbox:checked {
+    background-color: #16a34a; /* Green fill */
+    border-color: #16a34a;
+}
+
+.task-checkbox:checked::after {
+    content: "✔";
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    display: inline-block;
+    transform: translateX(3px);
+    transform: translateY(-3px);
+}
+
+
+
+
+/* Hide default checkbox */
+.custom-checkbox {
+    display: none;
+}
+
+/* Create a new checkbox appearance */
+.custom-checkbox-label {
+    width: 24px;
+    height: 24px;
+    background-color: #222;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+/* Checkbox checked style */
+.custom-checkbox:checked + .custom-checkbox-label {
+    background-color: #16a34a; /* Green */
+}
+
+/* Checkmark (✓) when checked */
+.custom-checkbox:checked + .custom-checkbox-label::after {
+    content: '✔';
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+
+
+
+
+/* Window that affichat with edit button */
+/* Edit window */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    /* overflow: auto; */
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #B6C2CF;
+}
+
+.modal-content {
+    background-color: #323940;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    top: -120px;
+    position: relative;
+    border-radius: 15px;
+}
+
+.close-modal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#modalCardText {
+    height: 30px;
+    text-align: center;
+    /* padding: -10px -10px; */
+
+}
+
+textarea{
+    outline: none;
+    resize: none;
+    border-radius: 5px;
+    border: 1;
+    border-color: #323940;
+    margin-bottom: 20px;
+    background-color: #445665;
+    color: #B6C2CF;
+    box-shadow: 0px 0px 2px rgba(0,0,0,0.3);
+    width: 100%;
+}
+.comment textarea,
+.description textarea {
+    padding: 10px 10px;
+
+}
+.comment textarea {
+    margin-bottom: 5px;
+}
+.comment-item {
+    background-color: #222;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+}
+
+.comments-container {
+    max-height: 120px;
+    overflow-y: auto;
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.comment-item {
+    background-color: #222;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    animation: slideIn 0.3s ease-out;
+}
+
+/* Add comment Button */
+#addcomment {
+    display: none;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+#addComment {
+    background-color: #5aac44; /* Green for add comment */
+}
+
+#addComment:hover {
+    background-color: #61bd4f; /* Lighter green on hover */
+}
+
+#saveCardChanges {
+    background-color: #eb5a46; /* Red for save changes */
+}
+
+#saveCardChanges:hover {
+    background-color: #cf513f; /* Darker red on hover */
+}
+
+
+
+
+
+
+
+
+/* Button to add new Boards */
+#Addboardbtn {
+    display: flex;
+    width: 300px;
+    height: fit-content;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.432);
+    overflow-x: auto;
+    /* align-self: flex-start;  */
+    /* margin-top: 20px;  */
+    /* margin-right: 20px; */
+    /* flex-shrink: 0;  */
+    background-color: #0079bf;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    /* margin-top: 5px; */
+}
+#Addboardbtn:hover {
+    background-color: #0090e3;
+}
+
+
+/* Container for new boards */
+#BoardContainer {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+
+
+    /* display: flex;
+    flex-direction: row; 
+    
+    
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 20px;
+    min-width: 300px; */
+    
+}
+
+
+/* Add card (Task) in new board Style */
+.new-Task-input {
+    width: 100%;
+    padding: 8px;
+    margin: 8px 0;
+    border: 2px solid #0079bf;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Dashboard.css">
+    <title>test-Dashboard</title>
+</head>
+<body>
+
+    <div class="header">
+        <div class="header-left">
+            <a href="#">Trello</a>
+            <a href="#">Workspaces</a>
+            <a href="#">Recent</a>
+            <a href="#">Started</a>
+            <a href="#">Create</a>
+        </div>
+        <div class="header-right">
+            <span>Search</span>
+        </div>
+    </div>
+
+
+
+
+    <div class="main-content">          <!-- All the background under header -->
+        <div class="board-container">   <!--for now it hold boards-->
+                <div class="board">    <!-- the boards -->
+
+
+                    <div class="column" id="backlog">  <!-- the dark place in board -->
+                        <h2 class="Backlog">📥 Backlog</h2>
+                        <div class="add-Task-Container"></div>
+                        <div class="add-Task">+ Add a Task</div>  <!--The text container for one -->  
+                        
+                    </div>
+
+                    <div class="column" id="todo">
+                        <h2 class="To-Do">To-Do</h2>
+                        <div class="add-Task-Container"></div>
+                        <div class="add-Task">+ Add a Task</div>
+                    </div>
+
+                    <div class="column" id="doing">
+                        <h2 class="Doing">Doing</h2>
+                        <div class="add-Task-Container"></div>
+                        <div class="add-Task">+ Add a Task</div>
+                    </div>
+
+                    
+                    <div class="column" id="done">
+                        <h2 class="Done">Done</h2>
+                        <div class="add-Task-Container"></div>
+                        <div class="add-Task">+ Add a Task</div>
+                    </div>
+
+
+
+
+
+                    <!--Container for new boards--> 
+                    <div id="BoardContainer" class="Board-container"></div>
+                    
+
+
+
+
+
+                    <!-- Add new Board Button -->
+                    <button id="Addboardbtn">➕ Add New Board</button>  
+
+                </div>
+                
+
+
+                
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- The Edit Window -->
+    <div id="cardModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Edit Card</h2>
+            <textarea id="modalCardText"></textarea>
+            <div class="description">
+                <h3>Description</h3>
+                <textarea name="description" id="description" placeholder="Add a description"></textarea>
+            </div>
+
+            <div class="comment">
+                <h3>Comments</h3>
+                <textarea name="comment" id="comment" placeholder="Write a comment..."></textarea>
+                <div class="comments-container"></div>
+                <button id="addcomment">Add Comment</button>
+            </div>
+            <button id="saveCardChanges">Save Changes</button>
+        </div>
+    </div>
+
+
+
+    <script src="Dashboard.js"></script>
+
+</body>
+</html>
