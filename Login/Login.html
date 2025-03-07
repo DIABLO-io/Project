@@ -5,29 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Login.css">
 
-    <title>Login-Page</title>
+    <title>Register</title>
 </head>
 <body>
-    <div class="Login" id="loginContainer">
-        <h1>Login</h1>
-        <form id="loginForm">
-            <label for="Email">Email</label>
-            <br>
-            <input type="email" name="email" id="email" placeholder="Enter email" required>
-            <br><br>
-            <label for="Password">Password</label>
-            <br>
-            <input type="password" name="password" id="password" placeholder="Enter Password" required>
-            <br><br>
-            <!-- <input class="button" type="submit" name="Login" value="Login"> -->
-             <button type="submit" class="button" id="loginbtn">Login</button>
-             <p id="message"></p>
+    
 
-             <p>Create Account : </p>
-            <button class="btn" id="signUp">Sign Up</button>
-        </form>        
-    </div>
-    <div class="Login" id="registerContainer"  style="display: none;">
+
+    <div class="Login" id="signUp"  style="display: none;">
         <h1>Register</h1>
         <form action="" method="post">
             <label for="fNmae">First Name</label>
@@ -49,14 +33,40 @@
             <br>
             <input type="password" name="password" id="password" placeholder="Enter Password" required>
             <br><br>
-            <input type="submit" id="SignUpButton" class="button" value="Sign Up" name="SignUp">
+            <input type="submit" id="Register" class="button" value="Register" name="SignUp">
+        </form>
 
+
+        <div>
             <p>-----------------------------OR-----------------------------</p>
             <p>Already Have Account ?</p>
-            <button class="btn" id="signIn">Sign In</button>
+            <button class="btn" id="signInButton">Sign In</button>
+        </div>
+    </div>
 
-        </form>
-    
+
+
+    <div class="Login" id="signIn">
+        <h1>Login</h1>
+        <form method="post" action="">
+            <label for="Email">Email</label>
+            <br>
+            <input type="email" name="email" id="email" placeholder="Enter email" required>
+            <br><br>
+            <label for="Password">Password</label>
+            <br>
+            <input type="password" name="password" id="password" placeholder="Enter Password" required>
+            <br><br>
+            <!-- <input class="button" type="submit" name="Login" value="Login"> -->
+             <button type="submit" class="button" id="loginbtn">Login</button>
+             <p id="message"></p>
+
+            
+        </form>        
+        <div>
+            <p>Create Account : </p>
+            <button class="btn" id="signUpButton">Sign Up</button>
+        </div>
     </div>
     
     <script src="Login.js"></script>
